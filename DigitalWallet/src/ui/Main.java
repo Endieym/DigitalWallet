@@ -1,10 +1,14 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import javax.security.auth.login.LoginException;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import exceptions.UserException;
 import model.User;
 import service.UserService;
 
@@ -37,14 +41,24 @@ public class Main
 			UserService service = context.getBean("userService", UserService.class);
 			service.login(user);
 		}
-		catch (LoginException le)
+		catch (UserException ue)
 		{
-			System.out.println(e.toString());
+			System.out.println(ue.toString());
+			ue.printStackTrace();
 			LoginUser(context, sc);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
-	public static void ChangeUser(Scanner sc)
+	public static void ChangeUser()
 	{
 		try
 		{
@@ -73,7 +87,7 @@ public class Main
 		}
 		finally
 		{
-			ChangeUser(context, sc);
+			ChangeUser();
 		}
 	}
 	

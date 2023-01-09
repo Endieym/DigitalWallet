@@ -1,5 +1,7 @@
 package service;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +27,7 @@ public class UserService {
 		
 	}
 
-	public boolean signup(User user) throws UserException { // returns if signup worked
+	public boolean signup(User user) throws UserException, FileNotFoundException, ClassNotFoundException, IOException { // returns if signup worked
 		List<User> userList = currentDao.getAllUsers();
 		for(User u : userList) {
 			if(u.equals(user))
@@ -39,7 +41,7 @@ public class UserService {
 		return true;
 		
 	}
-	public boolean login(User user) throws UserException { // returns if login worked
+	public boolean login(User user) throws UserException, FileNotFoundException, ClassNotFoundException, IOException { // returns if login worked
 		List<User> userList = currentDao.getAllUsers();
 		for(User u : userList) {
 			if(u.equals(user))
@@ -51,7 +53,7 @@ public class UserService {
 		
 	}
 	
-	public Map<Coin, Integer> getWallet(User user) {  // check later exception
+	public Map<Coin, Integer> getWallet(User user) throws FileNotFoundException, ClassNotFoundException, IOException {  // check later exception
 		List<User> userList = currentDao.getAllUsers();
 		for(User u : userList) {
 			if(u.equals(user))
@@ -62,12 +64,16 @@ public class UserService {
 		
 	}
 	
-	public void withdrawFromWallet(User user) {
+	public void withdrawFromWallet(User user, Coin coin, int amount) throws FileNotFoundException, ClassNotFoundException, IOException {
 		HashMap<Coin, Integer> wallet = (HashMap<Coin, Integer>) this.getWallet(user);
-		wallet.get(wallet);
+		int prev = wallet.get(coin);
+		if(amount - prev <= 0)
+			wallet.remove(coin);
+		else
+			wallet.put(coin, prev-amount);
 	}
 	
-	public void depositFromWallet(User user) {
+	public void depositToWallet(User user) {
 		
 	}
 	
