@@ -23,7 +23,7 @@ public class User implements Comparable<User>{
 		super();
 		this.name = name;
 		this.password = password;
-		this.wallet = new HashMap();
+		this.wallet = new HashMap<Coin, Integer>();
 	}
 	
 	public void addCoin(Coin coin, int amount) {
@@ -37,6 +37,9 @@ public class User implements Comparable<User>{
 			System.out.println(String.format("Updated %s amount",coin.getName()));
 		}
 		
+	}
+	public Map<Coin, Integer> getWallet() {
+		return wallet;
 	}
 
 	public void setName(String name) {
@@ -70,16 +73,7 @@ public class User implements Comparable<User>{
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (wallet == null) {
-			if (other.wallet != null)
-				return false;
-		} else if (!wallet.equals(other.wallet))
-			return false;
+		
 		return true;
 	}
 
