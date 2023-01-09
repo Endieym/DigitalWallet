@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class User {
+public class User implements Comparable<User>{
 	
 	private String name, password;
 	
@@ -50,6 +50,44 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", password=" + password + ", wallet=" + wallet + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (wallet == null) {
+			if (other.wallet != null)
+				return false;
+		} else if (!wallet.equals(other.wallet))
+			return false;
+		return true;
+	}
+
+	public int compareTo(User o) {
+		return this.name.compareTo(o.getName());
+	}
+	
+	
 	
 	
 
