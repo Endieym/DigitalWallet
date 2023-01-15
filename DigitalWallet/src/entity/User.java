@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 
-@Component
+
 public class User implements Comparable<User>{
 	
 	private String name, password;
@@ -20,7 +20,6 @@ public class User implements Comparable<User>{
 	}
 
 	public User(String name, String password) {
-		super();
 		this.name = name;
 		this.password = password;
 		this.wallet = new HashMap<Coin, Integer>();

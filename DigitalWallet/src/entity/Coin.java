@@ -1,12 +1,18 @@
-package model;
+package entity;
 
+import java.util.HashMap;
 
 public class Coin implements Comparable<Coin>
 {
-	// define a private field for the dependency - help
-	
 	private int value;
 	private String name;
+	
+	// define a private field for the dependency - help
+	public Coin(String name, int value) {
+		this.name = name;
+		this.value = value;
+	}
+	
 	public int getValue() {
 		return value;
 	}

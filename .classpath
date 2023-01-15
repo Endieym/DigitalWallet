@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="src" path="DigitalWallet/src"/>
 	<classpathentry kind="lib" path="DigitalWallet/lib/spring-aop-5.0.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="DigitalWallet/lib/spring-aspects-5.0.7.RELEASE.jar"/>
@@ -23,5 +23,6 @@
 	<classpathentry kind="lib" path="DigitalWallet/lib/spring-webflux-5.0.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="DigitalWallet/lib/spring-webmvc-5.0.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="DigitalWallet/lib/spring-websocket-5.0.7.RELEASE.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
